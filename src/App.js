@@ -72,7 +72,7 @@ function LandingPage({ onNavigate }) {
 
       <div className="max-w-7xl mx-auto px-4 py-20 text-center text-white space-y-8">
         <h1 className="text-6xl font-bold leading-tight">
-          طوّر مهارات
+          طوِّر مهارات
           <br />
           <span className="text-yellow-300">القرن 21</span>
         </h1>
@@ -254,7 +254,7 @@ function StudentDashboard({ activeTab }) {
   };
 
   const handleSubmit = async (taskId) => {
-    const content = prompt('أدخل حلك للمهمة:');
+    const content = window.prompt('أدخل حلك للمهمة:');
     if (!content) return;
 
     try {
@@ -358,7 +358,7 @@ function StudentDashboard({ activeTab }) {
                       {task.status === 'cancelled' ? (
                         <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">ملغاة</span>
                       ) : task.submission_status === 'graded' ? (
-                        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">مُقيّمة</span>
+                        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">مُقيَّمة</span>
                       ) : task.submission_status === 'submitted' ? (
                         <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">تم الرفع</span>
                       ) : (
@@ -457,11 +457,11 @@ function TeacherDashboard() {
   };
 
   const handleCreateTask = async () => {
-    const title = prompt('عنوان المهمة:');
+    const title = window.prompt('عنوان المهمة:');
     if (!title) return;
     
-    const description = prompt('وصف المهمة:');
-    const due_date = prompt('موعد التسليم (YYYY-MM-DD):');
+    const description = window.prompt('وصف المهمة:');
+    const due_date = window.prompt('موعد التسليم (YYYY-MM-DD):');
 
     try {
       await apiCall('/tasks', {
@@ -483,7 +483,7 @@ function TeacherDashboard() {
   };
 
   const handleCancelTask = async (taskId) => {
-    if (!confirm('هل تريد إلغاء هذه المهمة?')) return;
+    if (!window.confirm('هل تريد إلغاء هذه المهمة?')) return;
 
     try {
       await apiCall(`/tasks/${taskId}`, {
